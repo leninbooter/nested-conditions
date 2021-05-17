@@ -1,0 +1,22 @@
+
+private func validateTrackingPermissions() {
+
+    if Didomi.shared.getUserConsentStatusForVendorAndRequiredPurposes(vendorId: .googleTagManagerVendor) == .enable {
+        self.shouldLoadTagManager(true)
+    } else {
+        self.shouldLoadTagManager(false)
+    }
+
+    if Didomi.shared.getUserConsentStatusForVendorAndRequiredPurposes(vendorId: .adFormVendor) == .enable {
+        self.shouldLoadAdForm(true)
+    } else {
+        self.shouldLoadAdForm(false)
+    }
+
+    if Didomi.shared.getUserConsentStatusForVendorAndRequiredPurposes(vendorId: .webLoyaltyVendor) == .enable {
+        self.shouldLoadWebLoyalty(true)
+    } else {
+        self.shouldLoadWebLoyalty(false)
+    }
+       
+}

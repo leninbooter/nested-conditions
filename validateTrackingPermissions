@@ -1,0 +1,24 @@
+private func validateTrackingPermissions() {
+        for vendorId in DidomiVendors.allCases {
+            switch vendorId {
+            case .googleTagManagerVendor:
+                if Didomi.shared.getUserConsentStatusForVendorAndRequiredPurposes(vendorId: vendorId.rawValue) == .enable {
+                    self.shouldLoadTagManager(true)
+                } else {
+                    self.shouldLoadTagManager(false)
+                }
+            case .adFormVendor:
+                if Didomi.shared.getUserConsentStatusForVendorAndRequiredPurposes(vendorId: vendorId.rawValue) == .enable {
+                    self.shouldLoadAdForm(true)
+                } else {
+                    self.shouldLoadAdForm(false)
+                }
+            case .webLoyaltyVendor:
+                if Didomi.shared.getUserConsentStatusForVendorAndRequiredPurposes(vendorId: vendorId.rawValue) == .enable {
+                    self.shouldLoadWebLoyalty(true)
+                } else {
+                    self.shouldLoadWebLoyalty(false)
+                }
+            }
+        }
+    }
